@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <nav>
+    <div class="containers nav-container">
+        <img class="logo" src="./public/cars/cartechlogo2.png" alt=""> <h3 class="heading">Car Tech India..</h3>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-link">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Permium cars</a></li>
+            <li><a href="details.html">Buy Car</a></li>
+            <li><a href="about.html" >About us</a></li>
+            <li><a href="#"class="active">Contact us</a></li>
+        </ul>
+    </div>
+</nav>
+    <section class="bg-white-50 dark:bg-slate-800" id="contact">
+        <div class="container">
+            <div class="header">
+                <h2 class="heading">Contact Us</h2>
+                <p class="description">We would love to speak with you. Fill out the form provided below or email us your request.</p>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <p class="message">We would love to speak with you. Fill out the form provided below or email us your request to <a href="mailto:techsupport@Cartechindia.com" class="email-link">techsupport@Cartechindia.com</a></p>
+                    <ul class="contact-info">
+                        <li>
+                            <div class="icon">📍</div>
+                            <div>
+                                <h3>Our Address</h3>
+                                <p>Cartechindia Headquarters</p>
+                                <p>123 Car Avenue</p>
+                                <p>Pune, Maharashtra, 441122</p>
+                                <p>India</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">📞</div>
+                            <div>
+                                <h3>Contact</h3>
+                                <p>Name: Asif Attar</p>
+                                <p>Mobile: 7755994123</p>
+                                <p>Email: <a href="mailto:asif.attar@caryanam.in" class="email-link">asif.attar@caryanam.in</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">🕒</div>
+                            <div>
+                                <h3>Working hours</h3>
+                                <p>Monday - Friday: 08:00 AM - 09:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-container">
+                    <h2>Let Us Contact You</h2>
+                    <form id="contact-form">
+                        <input type="text" id="from_name" placeholder="Your name" required>
+                        <input type="email" id="email_id" placeholder="Your email address" required>
+                        <textarea id="message" placeholder="Please Share Your Feedback What We Can Improve..." required></textarea>
+                        <button type="submit" id="submit-btn">Send Message</button>
+                    </form>
+                    <div id="success-message" class="success-message">Our team will contact you soon...!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer>
+      <div class="container footer-content">
+          <div class="footer-logos">
+              <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+              <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+          </div>
+          <p style="font-weight: bold; margin-top: 10px;">
+              CarTech Associated with UCDAP
+          </p>
+          <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="cookie.html">Cookie Policy</a></li>
+          </ul>
+          <hr>
+          <div class="footer-social">
+              <a href="https://www.facebook.com/">Facebook</a>
+              <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+          </div>
+      </div>
+  </footer>
+</body>
+ <script>
+   // Get the mobile menu and nav links elements
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-link');
+
+// Add click event to toggle the navigation links visibility
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+ </script>
+</body>
+</html>

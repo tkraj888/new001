@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Details</title>
+  <link rel="stylesheet" href="details.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="containers nav-container">
+       <img class="logo" src="./public/cars/cartechlogo2.png" alt="" herf=>
+        <h3 class="heading">Car Tech India..</h3>
+        <div class="menu-toggle" id="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+        <ul class="nav-link">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Permium cars</a></li>
+          <li><a href="#" class="active">Buy Car</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- <div>
+    <div class="main-container">
+     Car Details Section -->
+<!-- <section class="car-details" id="car-details">
+  <img id="car-image" src="./image/car1.jpg" alt="Car Image">
+  <div class="details-info">
+    <h1 id="car-name">Car Name</h1>
+    <p><strong>Price:</strong> <span id="car-price">$0</span></p>
+    <p><strong>Fuel Type:</strong> <span id="car-fuel">Fuel Type</span></p>
+    <p><strong>Year:</strong> <span id="car-year">Year</span></p>
+    <p><strong>Color:</strong> <span id="car-color">Color</span></p>
+    <p><strong>Engine Type:</strong> <span id="car-engine">Engine Type</span></p>
+    <ul id="car-features">
+    </ul>
+    <p id="car-description">Description of the car goes here...</p>
+    <button class="view-details" onclick="window.location.href='listings.html'">View list</button>
+  </div>
+</section> -->
+
+</div>
+      <!-- Filters Section -->
+      <div class="filter-container">
+        <h2>Filters</h2>
+        <div class="filter-group">
+            <label>Price Range</label>
+            <input type="range" id="priceRange" min="0" max="6000000" step="10000" value="0">
+            <div class="price-labels">
+                <span>₹0</span>
+                <span id="priceValue">₹60L</span>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label>What is your price range?</label>
+            <div class="checkbox-list">
+                <label><input type="checkbox"> Under ₹2 Lakh</label>
+                <label><input type="checkbox"> ₹2 - ₹5 Lakh</label>
+                <label><input type="checkbox"> ₹5 - ₹8 Lakh</label>
+                <label><input type="checkbox"> ₹8 - ₹10 Lakh</label>
+                <label><input type="checkbox"> Above ₹10 Lakh</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label>Area</label>
+            <input type="text" placeholder="Enter area">
+        </div>
+
+        <div class="filter-group">
+            <label>Year</label>
+            <input type="text" placeholder="Enter year">
+        </div>
+
+        <div class="filter-group">
+            <label>Brands</label>
+            <input type="text" placeholder="Enter brand">
+        </div>
+
+        <div class="filter-group">
+            <label>Models</label>
+            <input type="text" placeholder="Enter model">
+        </div>
+
+        <div class="filter-group">
+            <label>Fuel Type</label>
+            <input type="text" placeholder="Enter fuel type">
+        </div>
+
+        <div class="filter-group">
+            <label>Transmission</label>
+            <input type="text" placeholder="Enter transmission type">
+        </div>
+
+        <div class="filter-buttons">
+          <button class="search" id="searchButton">SEARCH</button>
+          <button class="reset" id="resetButton">RESET</button>
+      </div>
+
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container footer-content">
+        <div class="footer-logos">
+            <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+            <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+        </div>
+        <p style="font-weight: bold; margin-top: 10px;">
+            CarTech Associated with UCDAP
+        </p>
+        <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+        </ul>
+        <hr>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+        </div>
+    </div>
+  </footer>
+<script>
+ const priceRange = document.getElementById('priceRange');
+const priceValue = document.getElementById('priceValue');
+const searchButton = document.getElementById('searchButton');
+const resetButton = document.getElementById('resetButton');
+
+priceRange.addEventListener('input', () => {
+    priceValue.textContent = `₹${(priceRange.value / 100000).toFixed(1)}L`;
+});
+
+searchButton.addEventListener('click', () => {
+    const filters = {
+        price: priceValue.textContent,
+        area: document.getElementById('areaInput').value,
+        year: document.getElementById('yearInput').value,
+        brand: document.getElementById('brandInput').value,
+        model: document.getElementById('modelInput').value,
+        fuelType: document.getElementById('fuelTypeInput').value,
+        transmission: document.getElementById('transmissionInput').value
+    };
+    alert(`Filters applied: ${JSON.stringify(filters, null, 2)}`);
+});
+resetButton.addEventListener('click', () => {
+  document.getElementById('priceRange').value = 0;
+  priceValue.textContent = '₹0';
+  document.querySelectorAll('.filter-group input[type="text"]').forEach(input => {
+    input.value = ''; 
+  });
+  priceValue.textContent = '₹60L';
+  document.querySelectorAll('.checkbox-list input').forEach(checkbox => {
+    checkbox.checked = false; 
+  });
+
+  document.querySelectorAll('.filter-group input[type="range"]').forEach(input => {
+    input.value = 0;
+  });
+
+  alert('Filters have been reset.');
+});
+// Get the mobile menu and nav links elements
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-link');
+
+// Add click event to toggle the navigation links visibility
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
+</body>
+</html>

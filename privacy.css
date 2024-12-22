@@ -1,0 +1,112 @@
+/* General Body and Layout Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f9ff;
+    color: #1e2761;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Title Styling */
+.title {
+    font-size: 3rem;
+    color: #1E2761;
+    padding: 2rem;
+}
+
+.sub-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #a088ed;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 50px;
+}
+
+.heading {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.nav-link {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link li {
+    display: inline-block;
+}
+
+.nav-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.nav-link a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Mobile Menu */
+#mobile-menu {
+    display: none;
+    cursor: pointer;
+}
+
+#mobile-menu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #mobile-menu {
+        display: block;
+    }
+
+    .nav-link {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #a088ed;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-link.active {
+        display: flex;
+    }
+}

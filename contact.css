@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+nav {
+  background-color: #a088ed;
+  padding: 10px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 50px;
+}
+
+.heading {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.nav-link {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link li {
+  display: inline-block;
+}
+
+.nav-link a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.nav-link a:hover,
+.nav-link .active {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.heading {
+  font-size: 3rem;
+  color: #333;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.info {
+  width: 48%;
+}
+
+.info p, .info h3 {
+  margin: 10px 0;
+  color: #555;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-right: 15px;
+  color: #0073e6;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.email-link {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.form-container {
+  width: 48%;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  background-color: #0073e6;
+  color: #fff;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+.success-message {
+  display: none;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+footer {
+  background-color: #a088ed;
+  color: white;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-social a {
+  color: white;
+  text-decoration: none;
+}
+
+hr {
+  border-color: black;
+  width: 80%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-content {
+      text-align: center;
+  }
+
+  .footer-logos {
+      flex-direction: column;
+  }
+
+  .footer-links {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .footer-social {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .info, .form-container {
+      width: 100%;
+  }
+
+  .heading {
+      font-size: 2rem;
+  }
+}
+
+#mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+
+#mobile-menu span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  #mobile-menu {
+    display: block;
+  }
+
+  .nav-link {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: #a088ed;
+    padding: 20px;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-link.active {
+    display: flex;
+  }
+}

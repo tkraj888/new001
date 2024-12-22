@@ -1,0 +1,202 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Tech India</title>
+        <link rel="stylesheet" href="./style.css">
+        <style>
+            /* Footer styles */
+            footer {
+                background-color: #a088ed;
+                color: white;
+                padding: 20px;
+            }
+
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-logos {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .footer-links {
+                display: flex;
+                gap: 20px;
+                list-style: none;
+                padding: 0;
+                justify-content: center;
+                margin: 20px 0;
+            }
+
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+            }
+
+            .footer-social {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .footer-social a {
+                color: white;
+                text-decoration: none;
+            }
+
+            hr {
+                border-color: black;
+                width: 80%;
+            }
+
+            /* Responsive styles */
+            @media (max-width: 768px) {
+                .footer-content {
+                    text-align: center;
+                }
+
+                .footer-logos {
+                    flex-direction: column;
+                }
+
+                .footer-links {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .footer-social {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="container nav-container">
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                 <h2 class="heading">Car Tech India..</h2> 
+                <ul class="nav-link">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="listings.html">Permium cars</a></li>
+                    <li><a href="details.html">Buy Car</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+                
+            </div>
+        </nav>
+
+        <!-- Header Section -->
+        <header>
+            <div class="container header-container">
+                <div class="header-left">
+                    <h1>Car Dealing Experience.</h1>
+                    <h3>Car Tech India!!</h3>
+                    <p>
+                        At Car Tech India, we believe buying a car should be exciting and stress-free. We are committed to making finding the right vehicle for you as easy and hassle-free as possible.
+                    </p>
+                    <a href="listings.html" class="btn">Explore Cars</a>
+                </div>
+                <div class="header-right">
+                    <div class="square">
+                        <img src="./image/homecar.png" alt="A car on display at Car Tech India">
+                    </div>
+                </div>
+            </div>
+            <div class="square2"></div>
+        </header>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="faq-header">Frequently Asked Questions</div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(1)">When and Where can I take a test drive?</button>
+                <div class="faq-answer" id="answer1">
+                    You can schedule a home test drive for this Autocar assured car at any date and time you find convenient using our test drive booking form. Your assigned Autocar Relationship Manager will then reach out to you and make sure all the details of your preferred car are made available to you before arriving at your home on the selected date & time for the test drive.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(2)">What benefits does CarTechIndia give us?</button>
+                <div class="faq-answer" id="answer2">
+                    Accessing helpful tips and advice on maintaining a second hand car. Hassle-free trade-in program for your current vehicle.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(3)">How do I book a car of my choice?</button>
+                <div class="faq-answer" id="answer3">
+                    You can book a car. If you complete the purchase of the vehicle within the holding period, the deposit will be applied towards the purchase. Otherwise, the booking amount will be refunded back to you and the booking canceled.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(4)">Is the replacement option available?</button>
+                <div class="faq-answer" id="answer4">
+                    Absolutely yes, replacement option is available and hassle-free trade-in program for your current vehicle.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(5)">Will CarTechIndia give us a history of the vehicle?</button>
+                <div class="faq-answer" id="answer5">
+                    Yes, we verify important details such as ownership history, accident records, and maintenance records.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(6)">Will CarTechIndia help me with car finance?</button>
+                <div class="faq-answer" id="answer6">
+                    Absolutely, buyers can choose to avail financing through Autocar wherein we would get the loan processed through our finance partners. Our established partnerships help us process loans faster and get our customers better interest rates. Depending on your credit worthiness, you can avail used car loans through Autocar at interest rates as low as 12.99% compared to the market rates of 14-16%.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(7)">Will CarTechIndia give us an extended warranty?</button>
+                <div class="faq-answer" id="answer7">
+                    Protect your investment with our extended warranty options. Get peace of mind knowing that your second-hand car is covered against unexpected repairs.
+                </div>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-logos">
+                    <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+                    <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+                </div>
+                <p style="font-weight: bold; margin-top: 10px;">
+                    CarTech Associated with UCDAP
+                </p>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="cookie.html">Cookie Policy</a></li>
+                </ul>
+                <hr>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/">Facebook</a>
+                    <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+                </div>
+            </div>
+        </footer>
+        <script>
+           const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-link');
+
+mobileMenu.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+        </script>
+    </body>
+    </body>
+    </html>

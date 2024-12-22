@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Car Tech India</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="containers nav-container">
+            <img class="logo" src="./public/cars/cartechlogo2.png" alt=""> 
+            <h3 class="heading">Car Tech India..</h3>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-link" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings.html">Permium cars</a></li>
+                <li><a href="details.html">Buy Car</a></li>
+                <li><a href="#" class="active">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="flex flex-col bg-light-blue-50 h-auto md:h-auto">
+        <!-- Main Content -->
+        <div class="flex justify-center items-center">
+            <img src="./public/carslogo/logotop.png" alt="Logo Top" class="h-auto" />
+        </div>
+        <div class="flex">
+            <div>
+                <!-- <img src="./public/carslogo/logoleft.png" alt="Logo Left" class="ml-1" /> -->
+            </div>
+            <div class="flex items-center flex-col">
+                <p class="mt-8 text-black text-4xl md:text-6xl lg:text-6xl font-serif text-center">About CarTechIndia</p>
+                <p class="mt-12 text-black text-3xl font-serif text-center">World-class Cars | Our Mission</p>
+                <p class="mt-12 text-black text-xl font-serif text-center">At CarTechIndia, our mission is to provide a seamless and trustworthy <br/> platform for buying and selling second-hand cars. <br/> We strive to make the car buying experience convenient, transparent, and enjoyable for every customer.</p>
+                <p class="mt-16 text-black text-4xl font-serif text-center">Your world-class SecondHand Cars here</p>
+                <p class="mt-12 text-black text-xl font-serif text-center">At SecondHandCars, we are passionate about providing high-quality, reliable second-hand cars to our customers...</p>
+                <p class="mt-16 text-black text-4xl font-serif text-center">Who We Are</p>
+                <p class="mt-12 text-black text-xl font-serif text-center">CarTechIndia is a team of passionate car enthusiasts dedicated to revolutionizing the way people buy and sell used cars...</p>
+                <p class="mt-16 text-black text-4xl font-serif text-center">What We Offer</p>
+                <p class="mt-12 text-black text-xl font-serif text-center">
+                    <span class="font-bold text-xl">Wide Selection:</span> We offer a diverse range of second-hand cars, including sedans, SUVs, trucks, and more, to suit every budget and preference. <br/>
+                    <span class="font-bold text-xl">Quality Assurance:</span> Every car listed on our platform undergoes a thorough inspection process to ensure its quality and reliability.
+                </p>
+                <p class="mt-16 text-black text-4xl font-serif text-center">Why Choose Us</p>
+                <p class="mt-12 text-black text-xl font-serif text-center">
+                    <span class="font-bold text-xl">Trustworthiness:</span> We prioritize integrity and trust in all our interactions. You can rely on us for fair pricing, accurate listings, and honest advice.
+                </p>
+                <p class="mt-12 text-black text-xl font-serif text-center">Thank you for choosing SecondHandCars for all your automotive needs. We look forward to serving you!</p>
+            </div>
+            <div class="ml-auto">
+                <!-- <img src="./public/carslogo/logoright.png" alt="Logo Right" /> -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logos">
+                <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+                <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+            </div>
+            <p style="font-weight: bold; margin-top: 10px;">CarTech Associated with UCDAP</p>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="cookie.html">Cookie Policy</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-twitter-square"></a>
+                <a href="#" class="fab fa-instagram-square"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
