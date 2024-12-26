@@ -187,6 +187,7 @@ header {
   opacity: 0;
   animation: zoomOut 1s ease forwards;
   animation-delay: 1.3s;
+  
 }
 
 .square img {
@@ -198,6 +199,10 @@ header {
   opacity: 0;
   animation: carAni forwards 1s ease;
   animation-delay: 1.6s;
+  display: block; 
+  max-width: 100%; 
+  height: auto; 
+  background: none;
 }
 
 .square2 {
@@ -400,7 +405,7 @@ header {
   .square img {
     max-width: 300px;
     top: 80px;
-    left: -130px;
+    left: -50px;
   }
 
   .square2 {

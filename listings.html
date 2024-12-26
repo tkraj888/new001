@@ -5,76 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Listings</title>
   <link rel="stylesheet" href="listing.css">
-  
   <script>
-    // Function to filter car listings based on selected filters
-    // Function to filter car listings based on selected filters
-function filterCars() {
-  const searchQuery = document.querySelector('.search-bar').value.toLowerCase();
-  const brandFilter = document.querySelector('select[name="brand"]').value;
-  const priceFilter = document.querySelector('select[name="price"]').value;
-  const fuelFilter = document.querySelector('select[name="fuel"]').value;
-
-  const carCards = document.querySelectorAll('.car-card');
-
-  carCards.forEach(card => {
-    const carTitle = card.querySelector('h2').textContent.toLowerCase();
-    const carPriceText = card.querySelector('p').textContent.toLowerCase();
-    const carFuel = card.querySelector('p:nth-child(3)').textContent.toLowerCase();
-    const carBrand = card.querySelector('h2').textContent.toLowerCase();
-
-    // Extract price number from the string (e.g., "$15,000" -> 15000)
-    const carPrice = parseInt(carPriceText.replace(/[^\d]/g, ''));
-
-    // Check if car matches filters
-    const matchesSearch = carTitle.includes(searchQuery);
-    const matchesBrand = brandFilter ? carBrand.includes(brandFilter) : true;
     
-    // Price Range Filter: Compare numeric values
-    let matchesPrice = true;
-    if (priceFilter) {
-      if (priceFilter === "under-10k") {
-        matchesPrice = carPrice < 10000;
-      } else if (priceFilter === "10k-20k") {
-        matchesPrice = carPrice >= 10000 && carPrice <= 20000;
-      } else if (priceFilter === "above-20k") {
-        matchesPrice = carPrice > 20000;
-      }
+  // Function to filter cars based on user input
+  function filterCars() {
+    const searchInput = document.querySelector('.search-bar').value.toLowerCase();
+    const brandFilter = document.querySelector('select[name="brand"]').value.toLowerCase();
+    const priceFilter = document.querySelector('select[name="price"]').value.toLowerCase();
+    const fuelFilter = document.querySelector('select[name="fuel"]').value.toLowerCase();
+
+    // Map price filter to numeric range
+    const priceRanges = {
+      "under-10k": [0, 10000],
+      "10k-20k": [10000, 20000],
+      "above-20k": [20000, Infinity]
+    };
+
+    const filteredCars = carDetails.filter(car => {
+      const matchesSearch = car.name.toLowerCase().includes(searchInput);
+      const matchesBrand = brandFilter === "" || car.name.toLowerCase().includes(brandFilter);
+      const matchesPrice = priceFilter === "" || 
+        (priceRanges[priceFilter] && parseFloat(car.price.replace(/[₹,*]/g, '').split('-')[0]) <= priceRanges[priceFilter][1]);
+      const matchesFuel = fuelFilter === "" || car.fuelType.toLowerCase() === fuelFilter;
+
+      return matchesSearch && matchesBrand && matchesPrice && matchesFuel;
+    });
+
+    displayFilteredCars(filteredCars);
+  }
+
+  // Function to display filtered cars
+  function displayFilteredCars(cars) {
+    const carListContainer = document.querySelector('.car-list');
+    carListContainer.innerHTML = '';
+
+    if (cars.length === 0) {
+      carListContainer.innerHTML = '<p>No cars match your criteria.</p>';
+      return;
     }
 
-    // Fuel Type Filter
-    const matchesFuel = fuelFilter ? carFuel.includes(fuelFilter.toLowerCase()) : true;
-
-    if (matchesSearch && matchesBrand && matchesPrice && matchesFuel) {
-      card.style.display = 'block'; // Show the car card if it matches
-    } else {
-      card.style.display = 'none'; // Hide the car card if it doesn't match
-    }
-  });
+    cars.forEach(car => {
+      carListContainer.innerHTML += `
+        <div class="car-card">
+          <img src="${car.image}" alt="${car.name}">
+          <h2>${car.name}</h2>
+          <p><strong>Price:</strong> ${car.price}</p>
+          <p><strong>Fuel Type:</strong> ${car.fuelType}</p>
+          <button class="view-details" onclick="viewCarDetails(${car.id})">View Details</button>
+        </div>
+      `;
+    });
+  }
+  function redirectToDetails(carId) {
+  // Redirect to viewdetails.html with the carId as a query parameter
+  window.location.href = `viewdetails.html?carId=${carId}`;
 }
 
-  </script>
 
+  // Initially display all cars
+  document.addEventListener('DOMContentLoaded', () => {
+    displayFilteredCars(carDetails);
+  });
+
+    // Array to store car details
+    const carDetails = [
+  {
+    id: 1,
+    name: "Toyota Fortuner",
+    price: "₹ 33.43 - 51.44 Lakh*",
+    fuelType: "Petrol",
+    description: "The Toyota Fortuner is a robust and stylish SUV offering unparalleled comfort, power, and off-road capability. It is built for adventure, whether you're driving on highways or tackling rugged terrains.",
+    image: "./image/car1.jpg"
+  },
+  {
+    id: 2,
+    name: "Toyota Prius",
+    price: "₹ 54.09 Lakh",
+    fuelType: "Hybrid",
+    description: "The Toyota Prius is a futuristic hybrid car that combines efficiency with style. It offers cutting-edge technology, eco-friendly driving, and a sleek design that stands out in the crowd.",
+    image: "./image/car2.jpg"
+  },
+  {
+    id: 3,
+    name: "Mahindra Thar Roxx",
+    price: "₹ 21.29 - 26.67 Lakh",
+    fuelType: "Hybrid",
+    description: "The Mahindra Thar Roxx is an off-road legend designed for adventure enthusiasts. With its rugged design and powerful engine, it is built to handle rough terrains while offering modern amenities for comfort.",
+    image: "./image/car3.jpg"
+  },
+  {
+    id: 4,
+    name: "Maruti Wagon R",
+    price: "₹ 6.34 - 8.46 Lakh",
+    fuelType: "Hybrid",
+    description: "The Maruti Wagon R is a compact and efficient city car, perfect for family outings and urban commutes. With its spacious interiors and smart design, it offers convenience and practicality for everyday use.",
+    image: "./image/car4.jpg"
+  }
+];
+
+
+    // Function to display car details
+    function viewCarDetails(carId) {
+      const detailsSection = document.querySelector('.car-details');
+      const car = carDetails.find(car => car.id === carId);
+
+      if (car) {
+        detailsSection.innerHTML = `
+          <img src="${car.image}" alt="${car.name}" class="details-image">
+          <h2>${car.name}</h2>
+          <p><strong>Price:</strong> ${car.price}</p>
+          <p><strong>Fuel Type:</strong> ${car.fuelType}</p>
+          <p>${car.description}</p>
+        `;
+        detailsSection.style.display = 'block'; // Show the details section
+        window.scrollTo({ top: detailsSection.offsetTop, behavior: 'smooth' });
+      }
+    }
+  </script>
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <nav>
       <div class="containers nav-container">
-        <img class="logo" src="./public/cars/cartechlogo2.png" alt="">
-        <h3 class="heading">Car Tech India..</h3>
+        <a href="index.html">
+          <img class="logo" src="./public/cars/cartechlogo2.png" alt="CarTech Logo">
+        </a>
+        <h3 class="heading">Car Tech India</h3>
         <div class="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
           <span></span>
-      </div>
+        </div>
         <ul class="nav-link">
           <li><a href="index.html">Home</a></li>
-          <li><a href="listings.html" class="active">Permium cars</a></li>
-          <li><a href="details.html">Buy Car</a></li>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="listings.html" class="active">Buy Car</a></li>
+          <li><a href="details.html">Premium Cars</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
     </nav>
@@ -85,21 +153,21 @@ function filterCars() {
     <div class="filters">
       <select name="brand" class="filter-dropdown" onchange="filterCars()">
         <option value="">Brand</option>
-        <option value="toyota">Toyota</option>
+        <option value="toyota">G Wagon</option>
         <option value="honda">Honda</option>
         <option value="bmw">BMW</option>
       </select>
       <select name="price" class="filter-dropdown" onchange="filterCars()">
         <option value="">Price Range</option>
-        <option value="under-10k">Under $10,000</option>
-        <option value="10k-20k">$10,000 - $20,000</option>
-        <option value="above-20k">Above $20,000</option>
+        <option value="under-10k">Under ₹10,000</option>
+        <option value="10k-20k">₹10,000 - ₹20,000</option>
+        <option value="above-20k">Above ₹20,000</option>
       </select>
       <select name="fuel" class="filter-dropdown" onchange="filterCars()">
         <option value="">Fuel Type</option>
         <option value="petrol">Petrol</option>
         <option value="diesel">Diesel</option>
-        <option value="Hybrid">Hybrid</option>
+        <option value="hybrid">Hybrid</option>
       </select>
     </div>
   </section>
@@ -109,104 +177,79 @@ function filterCars() {
     <section class="car-listings">
       <div class="container">
         <div class="car-list">
-          <!-- Example of a car card. Loop this for all the cars -->
           <div class="car-card">
             <img src="./image/car1.jpg" alt="Car 1">
-            <h2>Honda Civic</h2>
-            <p><strong>Price:</strong> $15,000</p>
+            <h2>Toyota Fortuner</h2>
+            <p><strong>Price:</strong> ₹ 3.6 crore</p>
             <p><strong>Fuel Type:</strong> Petrol</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=1'">View Details</button>
+            <button class="view-details" onclick="redirectToDetails(1)">View Details</button>
           </div>
 
           <div class="car-card">
             <img src="./image/car2.jpg" alt="Car 2">
             <h2>Toyota Prius</h2>
-            <p><strong>Price:</strong> $20,000</p>
+            <p><strong>Price:</strong> ₹ 54.09 Lakh</p>
             <p><strong>Fuel Type:</strong> Hybrid</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=2'">View Details</button>
+            <button class="view-details" onclick="viewCarDetails(2)">View Details</button>
           </div>
 
           <div class="car-card">
             <img src="./image/car3.jpg" alt="Car 3">
             <h2>Mahindra Thar Roxx</h2>
-            <p><strong>Price:</strong> $25,000</p>
+            <p><strong>Price:</strong> ₹ 21.29 - 26.67 Lakh</p>
             <p><strong>Fuel Type:</strong> Hybrid</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=3'">View Details</button>
+            <button class="view-details" onclick="viewCarDetails(3)">View Details</button>
           </div>
 
           <div class="car-card">
             <img src="./image/car4.jpg" alt="Car 4">
             <h2>Maruti Wagon R</h2>
-            <p><strong>Price:</strong> $10,000</p>
+            <p><strong>Price:</strong> ₹ 6.34 - 8.46 Lakh</p>
             <p><strong>Fuel Type:</strong> Hybrid</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=4'">View Details</button>
-          </div>
-
-          <div class="car-card">
-            <img src="./image/car5.jpg" alt="Car 5">
-            <h2>BMW M</h2>
-            <p><strong>Price:</strong> $25,000</p>
-            <p><strong>Fuel Type:</strong> Hybrid</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=5'">View Details</button>
-          </div>
-
-          <div class="car-card">
-            <img src="./image/car6.jpg" alt="Car 5">
-            <h2>Mercedes</h2>
-            <p><strong>Price:</strong> $35,000</p>
-            <p><strong>Fuel Type:</strong> Hybrid</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=6'">View Details</button>
-          </div>
-          <div class="car-card">
-            <img src="./image/car7.jpg" alt="Car 1">
-            <h2>Honda Civic</h2>
-            <p><strong>Price:</strong> $15,000</p>
-            <p><strong>Fuel Type:</strong> Petrol</p>
-            <button class="view-details" onclick="window.location.href='details.html?carId=1'">View Details</button>
+            <button class="view-details" onclick="viewCarDetails(4)">View Details</button>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Car Details Section -->
+    <section class="car-details" style="display: none;">
+      <!-- Details will be dynamically added here -->
     </section>
   </main>
 
   <footer>
     <div class="container footer-content">
-        <div class="footer-logos">
-            <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
-            <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
-        </div>
-        <p style="font-weight: bold; margin-top: 10px;">
-            CarTech Associated with UCDAP
-        </p>
-        <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-        </ul>
-        <hr>
-        <div class="footer-social">
-            <a href="https://www.facebook.com/">Facebook</a>
-            <a href="https://www.instagram.com/accounts/login/">Instagram</a>
-        </div>
+      <div class="footer-logos">
+        <a href="index.html">
+          <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+          <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+        </a>
+      </div>
+      <p style="font-weight: bold; margin-top: 10px;">
+        CarTech Associated with UCDAP
+      </p>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <hr>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+      </div>
     </div>
-</footer>
-<script>
-  const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.nav-link');
-const body = document.body;
+  </footer>
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-link');  // Ensure this targets the <ul> element
 
 mobileMenu.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-  navLinks.classList.toggle('active');
-  body.classList.toggle('menu-open'); // Prevent background scrolling
+  navLinks.classList.toggle('active');  // Toggle the 'active' class on <ul>
 });
 
-function toggleAnswer(id) {
-  const answer = document.getElementById(`answer${id}`);
-  answer.classList.toggle('show');
-}
-
-</script>
+  </script>
 </body>
 </html>

@@ -82,6 +82,9 @@
     <body>
         <nav>
             <div class="container nav-container">
+                <a href="index.html">
+                    <img class="logo" src="./public/cars/cartechlogo2.png" alt="CarTech Logo">
+                </a>
                 <div class="menu-toggle" id="mobile-menu">
                     <span></span>
                     <span></span>
@@ -90,8 +93,8 @@
                  <h2 class="heading">Car Tech India..</h2> 
                 <ul class="nav-link">
                     <li><a href="#" class="active">Home</a></li>
-                    <li><a href="listings.html">Permium cars</a></li>
-                    <li><a href="details.html">Buy Car</a></li>
+                    <li><a href="listings.html">Buy Car</a></li>
+                    <li><a href="details.html">Permium cars</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="contact.html">Contact us</a></li>
                 </ul>
@@ -99,7 +102,6 @@
             </div>
         </nav>
 
-        <!-- Header Section -->
         <header>
             <div class="container header-container">
                 <div class="header-left">
@@ -112,7 +114,9 @@
                 </div>
                 <div class="header-right">
                     <div class="square">
+                        <a href="index.html">
                         <img src="./image/homecar.png" alt="A car on display at Car Tech India">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -169,8 +173,10 @@
         <footer>
             <div class="container footer-content">
                 <div class="footer-logos">
+                    <a href="index.html">
                     <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
                     <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+                   </a>
                 </div>
                 <p style="font-weight: bold; margin-top: 10px;">
                     CarTech Associated with UCDAP
@@ -189,6 +195,15 @@
             </div>
         </footer>
         <script>
+            function toggleAnswer(id) {
+    const answer = document.getElementById(`answer${id}`);
+    if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+    } else {
+        answer.style.display = 'block';
+    }
+}
+
            const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-link');
 
@@ -198,5 +213,5 @@ mobileMenu.addEventListener('click', () => {
 
         </script>
     </body>
-    </body>
     </html>
+    

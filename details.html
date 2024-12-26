@@ -10,17 +10,19 @@
   <header>
     <nav>
       <div class="containers nav-container">
-       <img class="logo" src="./public/cars/cartechlogo2.png" alt="" herf=>
+        <a href="index.html">
+          <img class="logo" src="./public/cars/cartechlogo2.png" alt="CarTech Logo">
+        </a>
         <h3 class="heading">Car Tech India..</h3>
         <div class="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
           <span></span>
-      </div>
+        </div>
         <ul class="nav-link">
           <li><a href="index.html">Home</a></li>
-          <li><a href="listings.html">Permium cars</a></li>
-          <li><a href="#" class="active">Buy Car</a></li>
+          <li><a href="listings.html">Buy Car</a></li>
+          <li><a href="#" class="active">Premium cars</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -28,156 +30,180 @@
     </nav>
   </header>
   <main>
-    <!-- <div>
-    <div class="main-container">
-     Car Details Section -->
-<!-- <section class="car-details" id="car-details">
-  <img id="car-image" src="./image/car1.jpg" alt="Car Image">
-  <div class="details-info">
-    <h1 id="car-name">Car Name</h1>
-    <p><strong>Price:</strong> <span id="car-price">$0</span></p>
-    <p><strong>Fuel Type:</strong> <span id="car-fuel">Fuel Type</span></p>
-    <p><strong>Year:</strong> <span id="car-year">Year</span></p>
-    <p><strong>Color:</strong> <span id="car-color">Color</span></p>
-    <p><strong>Engine Type:</strong> <span id="car-engine">Engine Type</span></p>
-    <ul id="car-features">
-    </ul>
-    <p id="car-description">Description of the car goes here...</p>
-    <button class="view-details" onclick="window.location.href='listings.html'">View list</button>
-  </div>
-</section> -->
+    <section class="filters">
+      <div class="container">
+        <form id="filter-form">
+          <label for="fuel-type">Fuel Type:</label>
+          <select id="fuel-type">
+            <option value="all">All</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+          </select>
 
-</div>
-      <!-- Filters Section -->
-      <div class="filter-container">
-        <h2>Filters</h2>
-        <div class="filter-group">
-            <label>Price Range</label>
-            <input type="range" id="priceRange" min="0" max="6000000" step="10000" value="0">
-            <div class="price-labels">
-                <span>₹0</span>
-                <span id="priceValue">₹60L</span>
-            </div>
-        </div>
-
-        <div class="filter-group">
-            <label>What is your price range?</label>
-            <div class="checkbox-list">
-                <label><input type="checkbox"> Under ₹2 Lakh</label>
-                <label><input type="checkbox"> ₹2 - ₹5 Lakh</label>
-                <label><input type="checkbox"> ₹5 - ₹8 Lakh</label>
-                <label><input type="checkbox"> ₹8 - ₹10 Lakh</label>
-                <label><input type="checkbox"> Above ₹10 Lakh</label>
-            </div>
-        </div>
-
-        <div class="filter-group">
-            <label>Area</label>
-            <input type="text" placeholder="Enter area">
-        </div>
-
-        <div class="filter-group">
-            <label>Year</label>
-            <input type="text" placeholder="Enter year">
-        </div>
-
-        <div class="filter-group">
-            <label>Brands</label>
-            <input type="text" placeholder="Enter brand">
-        </div>
-
-        <div class="filter-group">
-            <label>Models</label>
-            <input type="text" placeholder="Enter model">
-        </div>
-
-        <div class="filter-group">
-            <label>Fuel Type</label>
-            <input type="text" placeholder="Enter fuel type">
-        </div>
-
-        <div class="filter-group">
-            <label>Transmission</label>
-            <input type="text" placeholder="Enter transmission type">
-        </div>
-
-        <div class="filter-buttons">
-          <button class="search" id="searchButton">SEARCH</button>
-          <button class="reset" id="resetButton">RESET</button>
+          <label for="price-range">Price Range:</label>
+          <select id="price-range">
+            <option value="all">All</option>
+            <option value="low">Below ₹20,000</option>
+            <option value="medium">₹20,000 - ₹50,000</option>
+            <option value="high">Above ₹50,000</option>
+          </select>
+        </form>
       </div>
+    </section>
 
+    <section class="car-listings">
+      <div class="container">
+        <div id="car-list" class="car-list">
+          <!-- Example of a car card -->
+          <div class="car-card" data-fuel="petrol" data-price="high">
+            <img src="./image/buycar/car1.jpeg" alt="Car 1">
+            <h2>G Wagon</h2>
+            <p><strong>Price:</strong> ₹ 3.6 crore</p>
+            <p><strong>Fuel Type:</strong> Petrol</p>
+            <button class="view-details" onclick="viewCarDetails(1)">View Details</button>
+          </div>
+
+          <div class="car-card" data-fuel="petrol" data-price="medium">
+            <img src="./image/buycar/car3.jpg" alt="Car 2">
+            <h2>Porsche</h2>
+            <p><strong>Price:</strong> ₹ 1.5 crore</p>
+            <p><strong>Fuel Type:</strong> Petrol</p>
+            <button class="view-details" onclick="viewCarDetails(2)">View Details</button>
+          </div>
+
+          <div class="car-card" data-fuel="diesel" data-price="medium">
+            <img src="./public/cars/Bg2.jpg" alt="Car 3">
+            <h2>BMW</h2>
+            <p><strong>Price:</strong> ₹ 1.1 crore</p>
+            <p><strong>Fuel Type:</strong> Diesel</p>
+            <button class="view-details" onclick="viewCarDetails(3)">View Details</button>
+          </div>
+
+          <div class="car-card" data-fuel="petrol" data-price="high">
+            <img src="./public/cars/Bg1.jpg" alt="Car 4">
+            <h2>Lamborghini</h2>
+            <p><strong>Price:</strong> ₹ 3.8 crore</p>
+            <p><strong>Fuel Type:</strong> Petrol</p>
+            <button class="view-details" onclick="viewCarDetails(4)">View Details</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Car Details Section -->
+    <section id="car-details" style="display: none;">
+      <div id="details-content"></div>
+      <button onclick="closeCarDetails()">Close</button>
+    </section>
   </main>
+
   <footer>
     <div class="container footer-content">
-        <div class="footer-logos">
-            <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
-            <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
-        </div>
-        <p style="font-weight: bold; margin-top: 10px;">
-            CarTech Associated with UCDAP
-        </p>
-        <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-        </ul>
-        <hr>
-        <div class="footer-social">
-            <a href="https://www.facebook.com/">Facebook</a>
-            <a href="https://www.instagram.com/accounts/login/">Instagram</a>
-        </div>
+      <div class="footer-logos">
+        <a href="index.html">
+          <img src="./public/cars/cartechlogo2.png" alt="CarTech Logo" style="width: 56px;">
+          <img src="./public/cars/ucdap2.png" alt="UCDAP Logo" style="width: 200px; height: 58px; margin-left: -16px;">
+        </a>
+      </div>
+      <p style="font-weight: bold; margin-top: 10px;">CarTech Associated with UCDAP</p>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+      <hr>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+      </div>
     </div>
   </footer>
+
 <script>
- const priceRange = document.getElementById('priceRange');
-const priceValue = document.getElementById('priceValue');
-const searchButton = document.getElementById('searchButton');
-const resetButton = document.getElementById('resetButton');
-
-priceRange.addEventListener('input', () => {
-    priceValue.textContent = `₹${(priceRange.value / 100000).toFixed(1)}L`;
-});
-
-searchButton.addEventListener('click', () => {
-    const filters = {
-        price: priceValue.textContent,
-        area: document.getElementById('areaInput').value,
-        year: document.getElementById('yearInput').value,
-        brand: document.getElementById('brandInput').value,
-        model: document.getElementById('modelInput').value,
-        fuelType: document.getElementById('fuelTypeInput').value,
-        transmission: document.getElementById('transmissionInput').value
-    };
-    alert(`Filters applied: ${JSON.stringify(filters, null, 2)}`);
-});
-resetButton.addEventListener('click', () => {
-  document.getElementById('priceRange').value = 0;
-  priceValue.textContent = '₹0';
-  document.querySelectorAll('.filter-group input[type="text"]').forEach(input => {
-    input.value = ''; 
-  });
-  priceValue.textContent = '₹60L';
-  document.querySelectorAll('.checkbox-list input').forEach(checkbox => {
-    checkbox.checked = false; 
-  });
-
-  document.querySelectorAll('.filter-group input[type="range"]').forEach(input => {
-    input.value = 0;
-  });
-
-  alert('Filters have been reset.');
-});
-// Get the mobile menu and nav links elements
-const mobileMenu = document.getElementById('mobile-menu');
+  
+  const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-link');
 
-// Add click event to toggle the navigation links visibility
 mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+  navLinks.classList.toggle('active');
 });
+  const fuelFilter = document.getElementById('fuel-type');
+  const priceFilter = document.getElementById('price-range');
+  const carList = document.getElementById('car-list');
+
+  function filterCars() {
+    const fuelType = fuelFilter.value;
+    const priceRange = priceFilter.value;
+
+    Array.from(carList.children).forEach(car => {
+      const carFuel = car.getAttribute('data-fuel');
+      const carPrice = car.getAttribute('data-price');
+      
+      const matchesFuel = fuelType === 'all' || carFuel === fuelType;
+      const matchesPrice = priceRange === 'all' || carPrice === priceRange;
+
+      if (matchesFuel && matchesPrice) {
+        car.style.display = '';
+      } else {
+        car.style.display = 'none';
+      }
+    });
+  }
+
+  fuelFilter.addEventListener('change', filterCars);
+  priceFilter.addEventListener('change', filterCars);
+
+  const carDetails = {
+    1: {
+      image: "./image/buycar/car1.jpeg",
+      name: "G Wagon",
+      price: "₹ 3.6 crore",
+      fuelType: "Petrol",
+      description: "The Mercedes-Benz G Wagon is a luxury SUV known for its power and iconic design."
+    },
+    2: {
+      name: "Porsche",
+      price: "₹ 1.5 crore",
+      fuelType: "Petrol",
+      description: "Porsche offers high performance combined with elegant design.",
+      image: "./image/buycar/car3.jpg"
+    },
+    3: {
+      name: "BMW",
+      price: "₹ 1.1 crore",
+      fuelType: "Diesel",
+      description: "BMW offers a sleek design with great performance.",
+      image: "./public/cars/Bg2.jpg"
+    },
+    4: {
+      name: "Lamborghini",
+      price: "₹ 3.8 crore",
+      fuelType: "Petrol",
+      description: "Lamborghini is synonymous with luxury, speed, and performance.",
+      image: "./public/cars/Bg1.jpg"
+    }
+  };
+
+  function viewCarDetails(carId) {
+    const details = carDetails[carId];
+    const detailsContent = document.getElementById('details-content');
+
+    detailsContent.innerHTML = `
+      <h2>${details.name}</h2>
+      <p><strong>Price:</strong> ${details.price}</p>
+      <p><strong>Fuel Type:</strong> ${details.fuelType}</p>
+      <p>${details.description}</p>
+      <img src="${details.image}" alt="${details.name}">
+    `;
+    document.getElementById('car-details').style.display = 'block';
+  }
+
+  function closeCarDetails() {
+    document.getElementById('car-details').style.display = 'none';
+  }
 </script>
+
 </body>
 </html>
